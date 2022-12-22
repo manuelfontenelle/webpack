@@ -1,0 +1,16 @@
+$text: orange;
+$bg: black;
+
+body {
+	color: $text;
+	background: $bg;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
+}
+p {
+	font-size: 50px;
+	font-family: Arial, Helvetica, sans-serif;
+}
