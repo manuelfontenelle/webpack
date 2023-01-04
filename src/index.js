@@ -1,5 +1,5 @@
 // require("./style.scss")
-import "./style.scss"
+import "./style.scss" // A enlever en prod
 // import ""
 import { camelCase } from "lodash"
 
