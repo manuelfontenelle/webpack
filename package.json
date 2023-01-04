@@ -14,12 +14,23 @@
 		"lodash": "^4.17.21"
 	},
 	"devDependencies": {
+		"autoprefixer": "^10.4.13",
 		"css-loader": "^6.7.3",
+		"mini-css-extract-plugin": "^2.7.2",
+		"postcss-loader": "^7.0.2",
 		"sass-loader": "^13.2.0",
 		"style-loader": "^3.3.1",
 		"webpack": "^5.75.0",
 		"webpack-bundle-analyzer": "^4.7.0",
 		"webpack-cli": "^5.0.1",
 		"webpack-dev-server": "^4.11.1"
-	}
+	},
+	"browserslist": [
+		"defaults",
+		"not ie < 11",
+		"last 2 versions",
+		"> 1%",
+		"iOS 7",
+		"last 3 iOS versions"
+	]
 }

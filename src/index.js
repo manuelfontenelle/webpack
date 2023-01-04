@@ -1,4 +1,6 @@
+// require("./style.scss")
 import "./style.scss"
+// import ""
 import { camelCase } from "lodash"
 
 console.log(camelCase("hello world"))

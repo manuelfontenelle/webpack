@@ -1,9 +1,12 @@
 const path = require("path")
-
-const BundleAnalyzerPlugin =
-	require("webpack-bundle-analyzer").BundleAnalyzerPlugin
+const MiniCssExtractPlugin = require("mini-css-extract-plugin") // plugin pour minifier scss
+// const devMode = process.env.NODE_ENV === "production"
+const devMode = process.env.NODE_ENV !== "production" // A mettre en commentaire et afficher la ligne du dessus pour minifier scss, le mode production en TRUE
+// const BundleAnalyzerPlugin =
+// 	require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 
 module.exports = {
+	mode: "production",
 	entry: "./src/index.js",
 	output: {
 		filename: "main.js",
@@ -13,20 +16,34 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.scss$/,
+				test: /\.s[ac]ss$/i,
 				use: [
-					{ loader: "style-loader" },
+					devMode ? "style-loader" : MiniCssExtractPlugin.loader,
 					{
 						loader: "css-loader",
 						options: {
-							modules: true,
+							importLoaders: 2,
+							sourceMap: true,
 						},
 					},
-					{ loader: "sass-loader" },
+					{
+						loader: "postcss-loader",
+					},
+					{
+						loader: "sass-loader",
+						options: { sourceMap: true },
+					},
 				],
 			},
 		],
 	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "main.css",
+			chunkFilename: "main-id.css",
+		}),
+	],
+	plugins: [].concat(devMode ? [] : [new MiniCssExtractPlugin()]), // Détection dev mode pour minification Scss
 	// plugins: [new BundleAnalyzerPlugin()],
 	devServer: {
 		static: {
