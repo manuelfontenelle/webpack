@@ -1,10 +1,11 @@
 const path = require("path")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin") // plugin pour minifier scss
-// const devMode = process.env.NODE_ENV === "production"
-const devMode = process.env.NODE_ENV !== "production" // A mettre en commentaire et afficher la ligne du dessus pour minifier scss, le mode production en TRUE
+const MiniCssExtractPlugin = require("mini-css-extract-plugin") // plugin pour passer scss en css
+
+// const devMode = process.env.NODE_ENV === "production" // activer pour BUILD ( css/js minifiés) == npm run build
+const devMode = process.env.NODE_ENV !== "production" // A mettre en mode DEV pour utiliser Sass + serveur == npm run dev
 
 module.exports = {
-	// mode: "production",
+	// mode: "development", deja present dans package.json dans == 	"build": "webpack --mode production",
 	entry: "./src/index.js",
 	output: {
 		filename: "main.js",
@@ -35,10 +36,11 @@ module.exports = {
 			},
 		],
 	},
+
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: "main.css",
-			chunkFilename: "main-id.css",
+			// chunkFilename: "main-id.css",
 		}),
 	],
 	plugins: [].concat(devMode ? [] : [new MiniCssExtractPlugin()]), // Détection dev mode pour minification Scss
