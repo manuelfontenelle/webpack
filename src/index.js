@@ -12,4 +12,14 @@ window.onload = function () {
 
 	var str = document.getElementById("txt")
 	str.innerHTML = camelCase(str.textContent)
+
+	const functionTest = () => {
+		return [1, "string", true]
+	}
+
+	const [a, b, c] = functionTest()
+
+	console.log(a)
+	console.log(b)
+	console.log(c)
 }
