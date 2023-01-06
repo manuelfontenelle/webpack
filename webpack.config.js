@@ -60,7 +60,7 @@ module.exports = {
 		],
 	},
 
-	plugins: [].concat(devMode ? [] : [new MiniCssExtractPlugin()]),
+	// plugins: [].concat(devMode ? [] : [new MiniCssExtractPlugin()]),
 
 	plugins: [
 		new MiniCssExtractPlugin({
